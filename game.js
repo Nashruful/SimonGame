@@ -15,8 +15,16 @@ $(".btn").on("click", function(event){
 
 
 });
+$("#startButton").on("click",function(){
+    animateStart();
+});
 
-
+$("#startButton").on("click",function(){
+    if (!starter){
+        nextSequence();
+        starter = true;
+    }
+});
 $(document).on("keydown", function(){
     if (!starter){
 
@@ -58,6 +66,11 @@ function animatePress(currentColor){
             $("#"+currentColor).removeClass("pressed")},100);
 
  }
+ function animateStart(){
+    $("#startButton").addClass("pressedStart");
+    setTimeout(function (){
+       $("#startButton").removeClass("pressedStart")},100);
+    }
 
 function checkAnswer(currentLevel){
     if (gamePattern[currentLevel] === userClickedPattern[currentLevel]){
